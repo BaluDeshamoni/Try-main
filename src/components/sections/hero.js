@@ -1,0 +1,111 @@
+import React, { useState, useEffect } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import styled from 'styled-components';
+import { navDelay, loaderDelay } from '@utils';
+import { usePrefersReducedMotion } from '@hooks';
+import Social from '@components/social';
+
+const StyledHeroSection = styled.section`
+  //   ${({ theme }) => theme.mixins.flexCenter};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  h1 {
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+    font-weight: 400;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-wrapper {
+    flex-shrink: 0;
+    width: 250px;
+    height: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  }
+`;
+
+const Hero = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const timeout = setTimeout(() => setIsMounted(true), navDelay);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const one = <h1>Hi, my name is</h1>;
+  const two = <h4 className="big-heading">Balu chander.</h4>;
+  const four = (
+    <>
+      <p>
+        I’m a software developer passionate about building scalable, user-centered solutions that
+        make a real impact. Driven by curiosity and a love for innovation, I’m constantly exploring
+        new ways to create intuitive, accessible products that put people first. I’m a software
+        developer passionate about building scalable, user-centered solutions that make a real
+        impact. Driven by curiosity and a love for innovation, I’m constantly exploring new ways to
+        create intuitive, accessible products that put people first.
+      </p>
+    </>
+  );
+
+  const five = (
+    <div>
+      <Social />
+    </div>
+  );
+
+  const items = [one, two, four, five];
+
+  return (
+    <StyledHeroSection>
+      <div className="content">
+        {prefersReducedMotion ? (
+          <>
+            {items.map((item, i) => (
+              <div key={i}>{item}</div>
+            ))}
+          </>
+        ) : (
+          <TransitionGroup component={null}>
+            {isMounted &&
+              items.map((item, i) => (
+                <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                  <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
+        )}
+      </div>
+
+      <div className="image-wrapper">
+        <img src="/images/balu.png" alt="Balu Chander" />
+      </div>
+    </StyledHeroSection>
+  );
+};
+
+export default Hero;
