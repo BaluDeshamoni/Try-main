@@ -160,29 +160,21 @@ const ArchivePage = ({ location, data }) => {
           <table>
             <thead>
               <tr>
-                <th>Year</th>
+                {/* <th>Year</th> */}
                 <th>Title</th>
-                <th className="hide-on-mobile">Made at</th>
-                <th className="hide-on-mobile">Built with</th>
+                <th className="hide-on-mobile">Org</th>
+                <th className="hide-on-mobile">Skills gained</th>
                 <th>Link</th>
               </tr>
             </thead>
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, ios, android, title, tech, company } =
+                    node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
-                      <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
+                      {/* <td className="overline year">{`${new Date(date).getFullYear()}`}</td> */}
 
                       <td className="title">{title}</td>
 
@@ -201,7 +193,7 @@ const ArchivePage = ({ location, data }) => {
                           ))}
                       </td>
 
-                      <td className="links">
+                      {/* <td className="links">
                         <div>
                           {external && (
                             <a href={external} aria-label="External Link">
@@ -224,7 +216,7 @@ const ArchivePage = ({ location, data }) => {
                             </a>
                           )}
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   );
                 })}

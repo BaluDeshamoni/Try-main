@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 import Social from '@components/social';
+import '../../styles/stars.css';
 
 const StyledHeroSection = styled.section`
   //   ${({ theme }) => theme.mixins.flexCenter};
@@ -100,7 +101,6 @@ const Hero = () => {
           </TransitionGroup>
         )}
       </div>
-
       <div className="image-wrapper">
         <img src="/images/balu.png" alt="Balu Chander" />
       </div>

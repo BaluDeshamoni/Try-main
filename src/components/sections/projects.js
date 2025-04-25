@@ -68,7 +68,7 @@ const StyledProject = styled.li`
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    // height: 100%;
+    height: 100%;
     min-height: 250px;
     padding: 2rem 1.75rem;
     border-radius: var(--border-radius);

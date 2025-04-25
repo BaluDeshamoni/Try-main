@@ -191,8 +191,8 @@ const GlobalStyle = createGlobalStyle`
     &:before {
       position: relative;
       bottom: 4px;
-      counter-increment: section;
-      content: '0' counter(section) '.';
+      // counter-increment: section;
+      // content: '0' counter(section) '.';
       margin-right: 10px;
       color: var(--green);
       font-family: var(--font-mono);
@@ -259,8 +259,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     transition: var(--transition);
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--green);
     }
 

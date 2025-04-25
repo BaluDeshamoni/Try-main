@@ -1,20 +1,9 @@
-import React from 'react';
-import { CgCPlusPlus } from 'react-icons/cg';
-import {
-  DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiMongodb,
-  DiPython,
-  DiGit,
-  DiHtml5,
-  DiCss3Full,
-  DiJava,
-} from 'react-icons/di';
-import { SiFirebase } from 'react-icons/si';
-import { GrMysql } from 'react-icons/gr';
+import React, { useEffect, useRef } from 'react';
 import './Skills.css';
 import styled from 'styled-components';
+import sr from '@utils/sr';
+import { usePrefersReducedMotion } from '@hooks';
+import { srConfig } from '@config';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -27,24 +16,38 @@ const StyledProjectsSection = styled.section`
 `;
 
 function Skills() {
+  const revealContainer = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    sr.reveal(revealContainer.current, srConfig());
+  }, []);
   const button = '<<';
   return (
-    <StyledProjectsSection>
-      {/* <h2 ref={revealTitle}>Other Noteworthy Projects</h2> */}
+    <StyledProjectsSection id="skills" ref={revealContainer}>
       <h2 className="numbered-heading">Skills</h2>
       <div className="tech">
-        <CgCPlusPlus className="tech-icons" />
-        <DiJavascript1 className="tech-icons" />
-        <DiNodejs className="tech-icons" />
-        <DiReact className="tech-icons" />
-        <DiMongodb className="tech-icons" />
-        <DiGit className="tech-icons" />
-        <SiFirebase className="tech-icons" />
-        <DiPython className="tech-icons" />
-        <GrMysql className="tech-icons" />
-        <DiJava className="tech-icons" />
-        <DiHtml5 className="tech-icons" />
-        <DiCss3Full className="tech-icons" />
+        <span className="tech-icons">C ++ </span>
+        <span className="tech-icons">React Js</span>
+        <span className="tech-icons">JavaScript</span>
+        <span className="tech-icons">My SQL</span>
+        <span className="tech-icons">MongoDB</span>
+
+        <span className="tech-icons">C ++ </span>
+        <span className="tech-icons">React Js</span>
+        <span className="tech-icons">JavaScript</span>
+        <span className="tech-icons">My SQL</span>
+        <span className="tech-icons">MongoDB</span>
+
+        <span className="tech-icons">C ++ </span>
+        <span className="tech-icons">React Js</span>
+        <span className="tech-icons">JavaScript</span>
+        <span className="tech-icons">My SQL</span>
+        <span className="tech-icons">MongoDB</span>
       </div>
     </StyledProjectsSection>
   );
