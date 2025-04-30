@@ -10,7 +10,7 @@ import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledTableContainer = styled.div`
-  margin: 100px -20px;
+  margin: 60px -20px;
 
   @media (max-width: 768px) {
     margin: 50px -10px;
@@ -152,8 +152,7 @@ const ArchivePage = ({ location, data }) => {
 
       <main>
         <header ref={revealTitle}>
-          <h1 className="big-heading">Archive</h1>
-          <p className="subtitle">A big list of things I’ve worked on</p>
+          <h1 className="big-heading">Certifications</h1>
         </header>
 
         <StyledTableContainer ref={revealTable}>

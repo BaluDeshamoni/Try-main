@@ -25,11 +25,23 @@ const StyledHeroSection = styled.section`
     font-weight: 400;
   }
 
+  .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 80%;
+  }
+
   .content {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .resume {
+    padding: 20px 0;
+    margin-left: 15px;
+    margin: 10px 10px;
   }
 
   .image-wrapper {
@@ -58,7 +70,7 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
+  const one = <h1>Hi, I'm</h1>;
   const two = <h4 className="big-heading">Balu chander.</h4>;
   const four = (
     <>
@@ -72,10 +84,15 @@ const Hero = () => {
       </p>
     </>
   );
-
+  const ResumeLink = (
+    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+      Resume
+    </a>
+  );
   const five = (
-    <div>
+    <div className="social">
       <Social />
+      <div className="resume">{ResumeLink}</div>
     </div>
   );
 
