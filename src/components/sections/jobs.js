@@ -188,6 +188,7 @@ const Jobs = () => {
   `);
 
   const jobsData = data.jobs.edges;
+  console.log(jobsData, 'jobsData');
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
