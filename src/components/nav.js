@@ -150,6 +150,12 @@ const StyledLinks = styled.div`
   }
 `;
 
+const ResumeLink = (
+  <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+    Resume
+  </a>
+);
+
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
@@ -215,7 +221,7 @@ const Nav = ({ isHome }) => {
             <StyledLinks>
               {navLinks && navLinks.map(({ url, name }, i) => <Link to={url}>{name}</Link>)}
 
-              {/* <div>{ResumeLink}</div> */}
+              <div>{ResumeLink}</div>
             </StyledLinks>
 
             <Menu />
@@ -245,7 +251,7 @@ const Nav = ({ isHome }) => {
                 </TransitionGroup>
               </ol>
 
-              {/* <TransitionGroup component={null}>
+              <TransitionGroup component={null}>
                 {isMounted && (
                   <CSSTransition classNames={fadeDownClass} timeout={timeout}>
                     <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
@@ -253,7 +259,7 @@ const Nav = ({ isHome }) => {
                     </div>
                   </CSSTransition>
                 )}
-              </TransitionGroup> */}
+              </TransitionGroup>
             </StyledLinks>
 
             <TransitionGroup component={null}>

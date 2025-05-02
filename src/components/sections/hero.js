@@ -38,11 +38,6 @@ const StyledHeroSection = styled.section`
     flex-direction: column;
     align-items: flex-start;
   }
-  .resume {
-    padding: 20px 0;
-    margin-left: 15px;
-    margin: 10px 10px;
-  }
 
   .image-wrapper {
     flex-shrink: 0;
@@ -84,15 +79,10 @@ const Hero = () => {
       </p>
     </>
   );
-  const ResumeLink = (
-    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
-    </a>
-  );
+
   const five = (
     <div className="social">
       <Social />
-      <div className="resume">{ResumeLink}</div>
     </div>
   );
 
