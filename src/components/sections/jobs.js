@@ -309,3 +309,195 @@ const Jobs = () => {
 };
 
 export default Jobs;
+
+// import React, { useState, useEffect, useRef } from 'react';
+// import { useStaticQuery, graphql } from 'gatsby';
+// import styled from 'styled-components';
+// import sr from '@utils/sr';
+// import { srConfig } from '@config';
+// import { usePrefersReducedMotion } from '@hooks';
+
+// const Section = styled.section`
+//   position: relative;
+//   width: 100%;
+//   overflow: hidden;
+//   padding: 100px 0;
+//   background-color: var(--navy);
+// `;
+
+// const Inner = styled.div`
+//   max-width: 100%;
+//   margin: 0 auto;
+//   text-align: center;
+// `;
+
+// const CarouselContainer = styled.div`
+//   position: relative;
+//   width: 100%;
+//   margin: 50px 0;
+//   overflow: visible;
+// `;
+
+// const CarouselTrack = styled.div`
+//   display: flex;
+//   transition: transform 0.5s ease-in-out;
+//   transform: translateX(${props => props.translateX}px);
+//   gap: 40px;
+//   padding: 0 calc(50vw - ${props => props.cardWidth / 2}px);
+// `;
+
+// const Card = styled.div`
+//   flex: 0 0 ${props => props.cardWidth}px;
+//   background-color: var(--light-navy);
+//   border-radius: 12px;
+//   padding: 30px 25px;
+//   box-shadow: 0 10px 30px -15px var(--navy-shadow);
+//   color: var(--lightest-slate);
+//   opacity: ${props => (props.isCenter ? 1 : 0.6)};
+//   transform: ${props => (props.isCenter ? 'scale(1.05)' : 'scale(0.95)')};
+//   border: ${props =>
+//     props.isCenter ? '2px solid var(--green)' : '1px solid var(--lightest-navy)'};
+//   transition: all 0.3s ease-in-out;
+// `;
+
+// const Title = styled.h3`
+//   margin-bottom: 5px;
+//   font-size: 22px;
+// `;
+
+// const Company = styled.a`
+//   font-size: 20px;
+//   color: var(--green);
+//   text-decoration: none;
+
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
+
+// const Date = styled.p`
+//   font-family: var(--font-mono);
+//   font-size: var(--fz-xs);
+//   color: var(--light-slate);
+//   margin: 10px 0 20px;
+// `;
+
+// const Content = styled.div`
+//   text-align: left;
+//   font-size: var(--fz-lg);
+
+//   ul {
+//     list-style: disc;
+//     padding-left: 20px;
+//   }
+
+//   li {
+//     margin-bottom: 10px;
+//   }
+// `;
+
+// const NavButtons = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   gap: 20px;
+//   margin-top: 30px;
+
+//   button {
+//     background-color: transparent;
+//     border: 1px solid var(--green);
+//     color: var(--green);
+//     font-size: 16px;
+//     padding: 10px 20px;
+//     border-radius: 6px;
+//     cursor: pointer;
+//     transition: var(--transition);
+
+//     &:hover {
+//       background-color: var(--green-tint);
+//     }
+
+//     &:disabled {
+//       opacity: 0.4;
+//       cursor: not-allowed;
+//     }
+//   }
+// `;
+
+// const Jobs = () => {
+//   const data = useStaticQuery(graphql`
+//     query {
+//       jobs: allMarkdownRemark(
+//         filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
+//         sort: { fields: [frontmatter___date], order: DESC }
+//       ) {
+//         edges {
+//           node {
+//             frontmatter {
+//               title
+//               company
+//               range
+//               url
+//             }
+//             html
+//           }
+//         }
+//       }
+//     }
+//   `);
+
+//   const jobs = data.jobs.edges;
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const revealContainer = useRef(null);
+//   const prefersReducedMotion = usePrefersReducedMotion();
+
+//   const cardWidth = 350;
+//   const gap = 40;
+
+//   useEffect(() => {
+//     if (!prefersReducedMotion) {
+//       sr.reveal(revealContainer.current, srConfig());
+//     }
+//   }, []);
+
+//   const goPrev = () => setCurrentIndex(prev => Math.max(prev - 1, 0));
+//   const goNext = () => setCurrentIndex(prev => Math.min(prev + 1, jobs.length - 1));
+
+//   // Calculate translateX to center the current card
+//   const translateX = window.innerWidth / 2 - cardWidth / 2 - currentIndex * (cardWidth + gap);
+
+//   return (
+//     <Section id="jobs" ref={revealContainer}>
+//       <Inner>
+//         <h2 className="numbered-heading">Experience</h2>
+//         <CarouselContainer>
+//           <CarouselTrack translateX={translateX} cardWidth={cardWidth}>
+//             {jobs.map((jobWrapper, index) => {
+//               const job = jobWrapper.node;
+//               const isCenter = index === currentIndex;
+//               return (
+//                 <Card key={index} isCenter={isCenter} cardWidth={cardWidth}>
+//                   <Title>{job.frontmatter.title}</Title>
+//                   <Company href={job.frontmatter.url} target="_blank" rel="noreferrer">
+//                     @{job.frontmatter.company}
+//                   </Company>
+//                   <Date>{job.frontmatter.range}</Date>
+//                   <Content dangerouslySetInnerHTML={{ __html: job.html }} />
+//                 </Card>
+//               );
+//             })}
+//           </CarouselTrack>
+//         </CarouselContainer>
+//         <NavButtons>
+//           <button onClick={goPrev} disabled={currentIndex === 0}>
+//             ⬅ Prev
+//           </button>
+//           <button onClick={goNext} disabled={currentIndex === jobs.length - 1}>
+//             Next ➡
+//           </button>
+//         </NavButtons>
+//       </Inner>
+//     </Section>
+//   );
+// };
+
+// export default Jobs;

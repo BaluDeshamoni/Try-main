@@ -16,6 +16,137 @@ const StyledProjectsGrid = styled.ul`
   }
 `;
 
+// const StyledProject = styled.li`
+//   position: relative;
+//   display: flex;
+//   flex-wrap: wrap;
+//   align-items: stretch;
+//   background: rgba(255, 255, 255, 0.05);
+//   backdrop-filter: blur(10px);
+//   border-radius: 20px;
+//   overflow: hidden;
+//   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+//   }
+
+//   &:not(:last-of-type) {
+//     margin-bottom: 60px;
+//   }
+
+//   .project-image {
+//     flex: 1 1 50%;
+//     min-width: 300px;
+//     height: 100%;
+//     overflow: hidden;
+//     position: relative;
+
+//     a {
+//       display: block;
+//       width: 100%;
+//       height: 100%;
+//     }
+
+//     .img {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//       filter: grayscale(100%) brightness(80%);
+//       transition: filter 0.3s ease;
+
+//       &:hover {
+//         filter: grayscale(0%) brightness(100%);
+//       }
+//     }
+//   }
+
+//   .project-content {
+//     flex: 1 1 50%;
+//     padding: 40px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     z-index: 2;
+
+//     @media (max-width: 768px) {
+//       padding: 30px 20px;
+//       flex: 1 1 100%;
+//     }
+//   }
+
+//   .project-title {
+//     font-size: clamp(24px, 5vw, 30px);
+//     margin: 0 0 20px;
+//     color: var(--white);
+
+//     a {
+//       text-decoration: none;
+//       color: inherit;
+//     }
+//   }
+
+//   .project-description {
+//     background: rgba(0, 0, 0, 0.3);
+//     padding: 20px;
+//     border-radius: 10px;
+//     color: var(--light-slate);
+//     font-size: var(--fz-md);
+//     margin-bottom: 20px;
+
+//     strong {
+//       color: var(--white);
+//     }
+
+//     a {
+//       ${({ theme }) => theme.mixins.inlineLink};
+//     }
+//   }
+
+//   .project-tech-list {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 10px;
+//     margin-bottom: 20px;
+//     list-style: none;
+//     padding: 0;
+
+//     li {
+//       background: var(--dark-slate);
+//       color: var(--green);
+//       padding: 5px 10px;
+//       border-radius: 5px;
+//       font-size: var(--fz-xs);
+//       font-family: var(--font-mono);
+//     }
+//   }
+
+//   .project-links {
+//     display: flex;
+//     gap: 10px;
+
+//     a {
+//       ${({ theme }) => theme.mixins.flexCenter};
+//       color: var(--lightest-slate);
+//       transition: color 0.3s ease;
+
+//       &:hover {
+//         color: var(--green);
+//       }
+
+//       svg {
+//         width: 22px;
+//         height: 22px;
+//       }
+//     }
+
+//     .cta {
+//       ${({ theme }) => theme.mixins.smallButton};
+//     }
+//   }
+// `;
+
 const StyledProject = styled.li`
   position: relative;
   display: grid;
