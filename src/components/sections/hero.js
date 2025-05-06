@@ -72,14 +72,14 @@ const Hero = () => {
       <p>
         I’m a software developer passionate about building scalable, user-centered solutions that
         make a real impact. Driven by curiosity and a love for innovation, I’m constantly exploring
-        new ways to create intuitive, accessible products that put people first. Ever since I was
-        very young, I used to wonder how the internet seemed to know everything.
+        new ways to create intuitive, accessible products that put people first.
       </p>
       <p>
         {' '}
-        That little spark of curiosity grew into a big passion for software development and
-        eventually led me to pursue a master’s degree in Computer Science, turning childhood wonder
-        into my dream career.
+        Ever since I was very young, I used to wonder how the internet seemed to know
+        everything.That little spark of curiosity grew into a big passion for software development
+        and eventually led me to pursue a master’s degree in Computer Science, turning childhood
+        wonder into my dream career.
       </p>
     </>
   );

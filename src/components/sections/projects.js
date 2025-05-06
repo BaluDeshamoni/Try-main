@@ -123,10 +123,10 @@
 // export default Projects;
 
 import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -354,9 +354,10 @@ const Projects = () => {
         })}
       </div>
       <div className="view-certs-btn">
-        <a href="/certifications" target="_blank" rel="noopener noreferrer">
+        {/* <a href="/certifications" target="_blank" rel="noopener noreferrer">
           View My Certs
-        </a>
+        </a> */}
+        <Link to="/archive">view the archive</Link>
       </div>
     </StyledProjectsSection>
   );

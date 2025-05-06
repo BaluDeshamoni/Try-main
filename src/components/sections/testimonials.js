@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const StyledTestimonialsSection = styled.section`
   display: flex;
@@ -11,46 +12,131 @@ const StyledTestimonialsSection = styled.section`
 
   h2 {
     font-size: clamp(24px, 5vw, var(--fz-heading));
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     text-align: center;
   }
 
-  .testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+  .carousel-container {
     width: 100%;
-    max-width: 1000px;
-  }
-`;
-
-const TestimonialCard = styled.div`
-  background: var(--light-navy);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: 0 10px 30px -15px var(--navy-shadow);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .quote {
-    font-size: var(--fz-lg);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    color: var(--slate);
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
   }
 
-  .author {
-    font-weight: bold;
+  .testimonial-card {
+    min-width: 100%;
+    padding: 2rem;
+    background: var(--light-navy);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+
+    .quote {
+      font-size: var(--fz-lg);
+      line-height: 1.6;
+      color: var(--slate);
+      margin-bottom: 1.5rem;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--green);
+        color: var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .author-details {
+        .author {
+          font-weight: bold;
+          color: var(--green);
+          font-size: var(--fz-md);
+          margin-bottom: 0.2rem;
+        }
+
+        .position {
+          font-size: var(--fz-sm);
+          color: var(--light-slate);
+        }
+      }
+    }
+  }
+
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+  }
+
+  .nav-button {
+    background: transparent;
+    border: 1px solid var(--green);
     color: var(--green);
-    font-size: var(--fz-sm);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(100, 255, 218, 0.1);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
-  .position {
-    font-size: var(--fz-xs);
-    color: var(--light-slate);
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--light-slate);
+      opacity: 0.3;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.active {
+        background: var(--green);
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 20px;
+
+    .testimonial-card {
+      padding: 1.5rem;
+    }
   }
 `;
 
@@ -63,30 +149,98 @@ const testimonialsData = [
   },
   {
     quote:
-      'They understood our vision perfectly and delivered exactly what we needed, on time and beyond expectations.',
+      'I had the pleasure of working with Harshitha during our undergraduation in 2023, on a full-stack project involving React and NodeJS, and I was thoroughly impressed by her technical skills and dedication.From designing clean and responsive front-end components in React to integrating back-end logic, she consistently delivered high-quality work with precision and care.Beyond her technical strengths, what truly stands out is her collaborative spirit.\n\n She’s an exceptional team player who brings a positive attitude to every discussion, is always open to feedback, and never hesitates to lend a hand when someone needs support. \n\nHer commitment to deadlines, problem-solving ability, and attention to detail made a significant impact on the success of our project.I highly recommend Harshitha to any team looking for a skilled, motivated, and reliable developer. She’s a valuable asset wherever she goes.',
     author: 'John Smith',
     position: 'Founder, InnovateX',
   },
   {
-    quote: 'The communication was clear and consistent. We always felt like a priority.',
+    quote:
+      "I had the opportunity to collaborate with Harshitha on various technical projects, coding trainings, WISE(Women in Software Engineering) powered by talent sprint during years 2021-2023. I've consistently been impressed by her leadership skills, dedication, and problem-solving mindset.\n\nShe's a talented full-stack developer, with strong experience in the MERN stack, and brings a great balance of frontend creativity and backend logic to her work.\n\nHarshitha also has a solid grasp of data structures and algorithms, UI designing, web development, and Python, making her a truly versatile developer. Her ability to build scalable applications while ensuring a smooth and intuitive user experience is one of her strongest traits.",
     author: 'Emily Taylor',
     position: 'Project Manager, BuildIt',
   },
 ];
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef(null);
+
+  // Auto-rotate slides every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Update carousel position when index changes
+  useEffect(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+  }, [currentIndex]);
+
+  const nextSlide = () => {
+    setCurrentIndex(prev => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(prev => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
+  };
+
+  const goToSlide = index => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <StyledTestimonialsSection>
-      <h2 className="numbered-heading">Testimonials</h2>
-      <div className="testimonial-grid">
-        {testimonialsData.map(({ quote, author, position }, idx) => (
-          <TestimonialCard key={idx}>
-            <p className="quote">“{quote}”</p>
-            <p className="author">{author}</p>
-            <p className="position">{position}</p>
-          </TestimonialCard>
+    <StyledTestimonialsSection id="testimonials">
+      <h2 className="numbered-heading">What's it like to work with me ?</h2>
+
+      <div className="carousel-dots">
+        {testimonialsData.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+          />
         ))}
       </div>
+
+      <div className="carousel-container">
+        <div className="carousel-track" ref={trackRef}>
+          {testimonialsData.map((testimonial, index) => (
+            <div key={index} className="testimonial-card">
+              <p className="quote">{testimonial.quote}</p>
+              <div className="author-info">
+                <div className="author-avatar">{testimonial.author.charAt(0)}</div>
+                <div className="author-details">
+                  <p className="author">{testimonial.author}</p>
+                  <p className="position">{testimonial.position}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="carousel-nav">
+        <button className="nav-button" onClick={prevSlide}>
+          <FiChevronLeft />
+        </button>
+        <button className="nav-button" onClick={nextSlide}>
+          <FiChevronRight />
+        </button>
+      </div>
+
+      {/* <div className="carousel-dots">
+        {testimonialsData.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div> */}
     </StyledTestimonialsSection>
   );
 };
