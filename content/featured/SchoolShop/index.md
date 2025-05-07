@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'School Shop'
-cover: './demo.png'
+cover: './Shop.png'
 github: 'https://github.com/bchiang7/spotify-profile'
 external: 'https://medium.com/@harshithasivalingala/%EF%B8%8F-school-shop-creating-a-
 student-driven-marketplace-8a6ae527882b'

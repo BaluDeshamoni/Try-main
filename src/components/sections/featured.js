@@ -523,11 +523,11 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && !cta && (
+                      {/* {external && !cta && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>

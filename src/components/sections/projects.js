@@ -150,7 +150,139 @@ const StyledProjectsSection = styled.section`
   .project-list {
     width: 100%;
     max-width: 900px;
+    margin-top: 50px;
   }
+  // .view-certs-btn {
+  //   margin-top: 2rem;
+  //   text-align: center;
+
+  //   a {
+  //     display: inline-block;
+  //     background-color: transparent;
+  //     color: var(--green);
+  //     border: 1px solid var(--green);
+  //     padding: 0.75rem 1.5rem;
+  //     font-size: var(--fz-md);
+  //     border-radius: var(--border-radius);
+  //     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  //     text-decoration: none;
+  //     position: relative;
+  //     overflow: hidden;
+  //     z-index: 1;
+
+  //     &:hover {
+  //       color: var(--navy);
+  //       transform: translateY(-2px);
+  //       box-shadow: 0 4px 15px rgba(var(--green-rgb), 0.3);
+
+  //       &::before {
+  //         transform: scaleX(1);
+  //       }
+  //     }
+
+  //     &::before {
+  //       content: '';
+  //       position: absolute;
+  //       top: 0;
+  //       left: 0;
+  //       width: 100%;
+  //       height: 100%;
+  //       background-color: var(--green);
+  //       z-index: -1;
+  //       transform: scaleX(0);
+  //       transform-origin: left;
+  //       transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  //     }
+  //     /* For a hover effect that fills from center */
+  //     &::before {
+  //       transform: scale(0);
+  //       transform-origin: center;
+  //       border-radius: var(--border-radius);
+  //     }
+
+  //     &:hover::before {
+  //       transform: scale(1);
+  //     }
+  //   }
+  // }
+  // .view-certs-btn {
+  //   margin-top: 2rem;
+  //   text-align: center;
+
+  //   a {
+  //     display: inline-block;
+  //     background-color: transparent;
+  //     color: var(--green);
+  //     border: 1px solid var(--green);
+  //     padding: 0.75rem 1.5rem;
+  //     font-size: var(--fz-md);
+  //     border-radius: var(--border-radius);
+  //     transition: all 0.3s ease;
+  //     text-decoration: none;
+  //     position: relative;
+
+  //     &:hover {
+  //       background-color: var(--green-tint);
+  //       color: var(--green);
+
+  //       &::after {
+  //         width: 100%;
+  //         left: 0;
+  //       }
+  //     }
+
+  //     &::after {
+  //       content: '';
+  //       position: absolute;
+  //       bottom: -2px;
+  //       left: 50%;
+  //       width: 0;
+  //       height: 2px;
+  //       background: var(--green);
+  //       transition: all 0.3s ease;
+  //     }
+  //   }
+  // }
+  // .view-certs-btn {
+  //   margin-top: 2rem;
+  //   text-align: center;
+
+  //   a {
+  //     display: inline-block;
+  //     background-color: transparent;
+  //     color: var(--green);
+  //     border: 1px solid var(--green);
+  //     padding: 0.75rem 1.5rem;
+  //     font-size: var(--fz-md);
+  //     border-radius: var(--border-radius);
+  //     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  //     text-decoration: none;
+  //     position: relative;
+  //     overflow: hidden;
+  //     z-index: 1;
+
+  //     &:hover {
+  //       color: var(--green);
+  //       transform: translateY(-2px);
+
+  //       &::before {
+  //         height: 100%;
+  //       }
+  //     }
+
+  //     &::before {
+  //       content: '';
+  //       position: absolute;
+  //       bottom: 0;
+  //       left: 0;
+  //       width: 100%;
+  //       height: 0;
+  //       background: var(--green-tint);
+  //       z-index: -1;
+  //       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  //     }
+  //   }
+  // }
   .view-certs-btn {
     margin-top: 2rem;
     text-align: center;
@@ -163,12 +295,15 @@ const StyledProjectsSection = styled.section`
       padding: 0.75rem 1.5rem;
       font-size: var(--fz-md);
       border-radius: var(--border-radius);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: all 0.3s ease;
       text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
       &:hover {
         background-color: var(--green-tint);
-        color: var(--navy);
+        color: var(--green);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(var(--green-rgb), 0.2);
       }
     }
   }
@@ -192,7 +327,7 @@ const StyledAccordionItem = styled.div`
 
     h3 {
       margin: 0;
-      font-size: var(--fz-lg);
+      font-size: var(--fz-xxl);
       color: var(--lightest-slate);
     }
 
@@ -224,7 +359,7 @@ const StyledAccordionItem = styled.div`
   .project-description {
     margin-left: 2rem;
     margin-top: 0.5rem;
-    font-size: var(--fz-md);
+    font-size: var(--fz-lg);
     color: var(--light-slate);
   }
 
@@ -238,7 +373,7 @@ const StyledAccordionItem = styled.div`
     span {
       background: var(--navy);
       color: var(--green);
-      font-size: var(--fz-xs);
+      font-size: var(--fz-lg);
       padding: 0.25rem 0.5rem;
       border-radius: var(--border-radius);
     }
@@ -271,7 +406,7 @@ const Projects = () => {
     query {
       projects: allMarkdownRemark(
         filter: {
-          fileAbsolutePath: { regex: "/content/projects/" }
+          fileAbsolutePath: { regex: "/content/achievements/" }
           frontmatter: { showInProjects: { ne: false } }
         }
         sort: { fields: [frontmatter___date], order: DESC }
@@ -300,11 +435,11 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 className="numbered-heading">🏆 Achievements</h2>
-      <p className="section-intro">
+      <h2 className="numbered-heading">Defining moments</h2>
+      {/* <p className="section-intro">
         Here are some highlights from my journey — from open-source contributions to award-winning
         projects.
-      </p>
+      </p> */}
       <div className="project-list">
         {projects.map(({ node }, idx) => {
           const { frontmatter, html } = node;
@@ -316,7 +451,7 @@ const Projects = () => {
               <div className="project-header" onClick={() => toggleExpand(idx)}>
                 <span className="toggle-icon">{isOpen ? '−' : '+'}</span>
                 <h3>{title}</h3>
-                <div className="project-links">
+                {/* <div className="project-links">
                   {github && (
                     <a
                       href={github}
@@ -335,7 +470,7 @@ const Projects = () => {
                       <Icon name="External" />
                     </a>
                   )}
-                </div>
+                </div> */}
               </div>
               <CSSTransition in={isOpen} timeout={300} classNames="accordion" unmountOnExit>
                 <div>
@@ -354,10 +489,10 @@ const Projects = () => {
         })}
       </div>
       <div className="view-certs-btn">
-        {/* <a href="/certifications" target="_blank" rel="noopener noreferrer">
-          View My Certs
-        </a> */}
-        <Link to="/archive">view the archive</Link>
+        <a href="/archive" rel="noopener noreferrer">
+          Certifications
+        </a>
+        {/* <Link to="/archive">view the archive</Link> */}
       </div>
     </StyledProjectsSection>
   );

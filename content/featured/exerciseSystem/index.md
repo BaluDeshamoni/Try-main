@@ -1,7 +1,8 @@
 ---
 date: '3'
 title: 'Real-time exercise Monitoring System'
-cover: './course-card.png'
+cover: './exercise.png'
+github: 'https://github.com/bchiang7/halcyon-site'
 external: 'https://medium.com/@harshithasivalingala/fitform-ai-powered-real-time-exercise-
 monitoring-f22f1ec552d1'
 cta: 'https://www.newline.co/courses/build-a-spotify-connected-app'

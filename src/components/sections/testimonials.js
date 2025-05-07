@@ -212,7 +212,7 @@ const Testimonials = () => {
             <div key={index} className="testimonial-card">
               <p className="quote">{testimonial.quote}</p>
               <div className="author-info">
-                <div className="author-avatar">{testimonial.author.charAt(0)}</div>
+                {/* <div className="author-avatar">{testimonial.author.charAt(0)}</div> */}
                 <div className="author-details">
                   <p className="author">{testimonial.author}</p>
                   <p className="position">{testimonial.position}</p>

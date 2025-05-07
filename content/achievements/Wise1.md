@@ -2,12 +2,13 @@
 date: '2020-03-27'
 title: 'Led a team of 6 that ranked #1 among 75 teams in the WISE program.'
 github: ''
-external: 'https://medium.com/stories-from-upstatement/integrating-algolia-search-with-wordpress-multisite-e2dea3ed449c'
+external: ''
 tech:
-  - Algolia
-  - WordPress
-  - PHP
-company: 'Upstatement'
+  - Cross-functional teamwork
+  - Agile task management
+  - Machine Learning
+
+company: 'Talentsprint'
 showInProjects: true
 ---
 

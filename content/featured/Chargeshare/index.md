@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: ' Chargeshare'
-cover: './halcyon.png'
+cover: './chargeShare.png'
 github: 'https://github.com/bchiang7/halcyon-site'
 external: 'https://medium.com/@harshithasivalingala/chargeshare-building-a-peer-to-peer-ev-charging-network-783edd6a884a'
 tech:

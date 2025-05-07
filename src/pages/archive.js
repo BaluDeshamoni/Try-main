@@ -192,14 +192,14 @@ const ArchivePage = ({ location, data }) => {
                           ))}
                       </td>
 
-                      {/* <td className="links">
+                      <td className="links">
                         <div>
                           {external && (
-                            <a href={external} aria-label="External Link">
+                            <a href={external} target="_blank" aria-label="External Link">
                               <Icon name="External" />
                             </a>
                           )}
-                          {github && (
+                          {/* {github && (
                             <a href={github} aria-label="GitHub Link">
                               <Icon name="GitHub" />
                             </a>
@@ -213,9 +213,9 @@ const ArchivePage = ({ location, data }) => {
                             <a href={android} aria-label="Google Play Store Link">
                               <Icon name="PlayStore" />
                             </a>
-                          )}
+                          )} */}
                         </div>
-                      </td> */}
+                      </td>
                     </tr>
                   );
                 })}
@@ -237,7 +237,7 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: ASC }
     ) {
       edges {
         node {

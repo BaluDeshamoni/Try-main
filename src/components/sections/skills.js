@@ -67,7 +67,8 @@ const StyledSkillsSection = styled.section`
     &:nth-child(odd) {
       padding-right: 20px;
       left: 0;
-      text-align: right;
+      // text-align: justify;
+      // text-align: right;
 
       &:after {
         right: -10px;
@@ -77,7 +78,8 @@ const StyledSkillsSection = styled.section`
     &:nth-child(even) {
       padding-left: 20px;
       left: 60%;
-      text-align: left;
+      // text-align: justify;
+      // text-align: left;
 
       &:after {
         left: -10px;
@@ -265,7 +267,7 @@ function Skills() {
 
   return (
     <StyledSkillsSection id="skills" ref={revealContainer}>
-      <h2 className="numbered-heading">My Development Journey</h2>
+      <h2 className="numbered-heading">Skills I Develoepd Through My Journey</h2>
 
       <div className="timeline">
         {skillsData.map((phase, i) => (
@@ -288,245 +290,3 @@ function Skills() {
 }
 
 export default Skills;
-
-// import React, { useEffect, useRef } from 'react';
-// import styled from 'styled-components';
-// import { srConfig } from '@config';
-// import sr from '@utils/sr';
-
-// // Custom hook for reduced motion preference
-// const usePrefersReducedMotion = () => {
-//   // Fallback if the hook isn't available
-//   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-// };
-
-// const StyledSkillsSection = styled.section`
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 100px 20px;
-
-//   .section-title {
-//     text-align: center;
-//     font-size: clamp(24px, 5vw, 2.5rem);
-//     margin-bottom: 50px;
-//     position: relative;
-//     color: var(--lightest-slate);
-
-//     &:after {
-//       content: '';
-//       display: block;
-//       width: 100px;
-//       height: 2px;
-//       background: var(--green);
-//       margin: 20px auto 0;
-//     }
-//   }
-
-//   .skills-grid {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//     gap: 20px;
-//   }
-
-//   .skill-card {
-//     background-color: var(--light-navy);
-//     border-radius: 8px;
-//     padding: 25px;
-//     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-//     opacity: 0;
-//     transform: translateY(20px);
-//     transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-//     border: 1px solid rgba(100, 255, 218, 0.1);
-
-//     &.visible {
-//       opacity: 1;
-//       transform: translateY(0);
-//     }
-
-//     &:hover {
-//       transform: translateY(-5px);
-//       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-//       border: 1px solid var(--green);
-//     }
-
-//     h3 {
-//       color: var(--green);
-//       margin-top: 0;
-//       font-size: 1.25rem;
-//       margin-bottom: 15px;
-//     }
-
-//     p {
-//       color: var(--light-slate);
-//       line-height: 1.6;
-//       margin-bottom: 15px;
-//       font-size: 0.95rem;
-//     }
-
-//     .tech-tags {
-//       display: flex;
-//       flex-wrap: wrap;
-//       gap: 8px;
-//       margin-top: 20px;
-
-//       span {
-//         background: rgba(100, 255, 218, 0.1);
-//         color: var(--green);
-//         padding: 3px 10px;
-//         border-radius: 20px;
-//         font-size: 0.8rem;
-//         font-family: var(--font-mono);
-//       }
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     padding: 80px 20px;
-
-//     .skills-grid {
-//       grid-template-columns: 1fr;
-//       gap: 15px;
-//     }
-
-//     .skill-card {
-//       padding: 20px;
-//     }
-//   }
-// `;
-
-// const skillsData = [
-//   {
-//     title: 'The Foundations',
-//     description:
-//       'My adventure began with the basics—HTML, CSS, and JavaScript. I spent nights tweaking layouts, debugging scripts, and marveling at how a few lines of code could create something interactive.',
-//     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Sass'],
-//   },
-//   {
-//     title: 'Frontend Revolution',
-//     description:
-//       'React JS changed everything. Suddenly, I could build reusable components, manage state efficiently, and create seamless user experiences. Adding Redux felt like unlocking a new level.',
-//     technologies: ['React', 'Redux', 'Styled Components', 'Responsive Design'],
-//   },
-//   {
-//     title: 'Backend Discovery',
-//     description:
-//       'Node JS and Express became my tools of choice. I built APIs, handled HTTP requests, and connected everything to databases. SQL taught me structured data, while MongoDB showed flexibility.',
-//     technologies: ['Node.js', 'Express', 'SQL', 'MongoDB'],
-//   },
-//   {
-//     title: 'Full-Stack Evolution',
-//     description:
-//       'Git saved me countless times—rolling back mistakes, collaborating with others. I was no longer just a frontend or backend developer. I became full-stack, building entire applications.',
-//     technologies: ['Git', 'REST APIs', 'Authentication', 'Web Security'],
-//   },
-//   {
-//     title: 'Advanced Tooling',
-//     description:
-//       'TypeScript brought order to my JavaScript chaos. Python opened doors to automation and machine learning. I explored data science, realizing how much more there was to discover.',
-//     technologies: ['TypeScript', 'Python', 'Data Science', 'AI Basics'],
-//   },
-//   {
-//     title: 'DevOps & Deployment',
-//     description:
-//       'CI/CD pipelines automated my workflows. Docker let me package apps neatly, and AWS gave me the power to scale globally. Firebase made real-time apps effortless.',
-//     technologies: ['Docker', 'AWS', 'Firebase', 'CI/CD'],
-//   },
-//   {
-//     title: 'System Architecture',
-//     description:
-//       "Microservices taught me to break down monoliths. DevOps became essential—automating infrastructure, monitoring performance. I wasn't just coding anymore; I was architecting systems.",
-//     technologies: ['Microservices', 'DevOps', 'System Design', 'Cloud Architecture'],
-//   },
-//   {
-//     title: 'Beyond Coding',
-//     description:
-//       'Design mattered just as much as functionality. Figma helped visualize interfaces. OOP principles kept logic clean. Mixed reality pushed me into uncharted creative territory.',
-//     technologies: ['Figma', 'UI/UX', 'OOP', 'Mixed Reality'],
-//   },
-//   {
-//     title: 'The Never-Ending Journey',
-//     description:
-//       'Every day brings new challenges—new frameworks, tools, paradigms. From frontend animations to AI-powered backends, from local databases to global deployments, the adventure continues.',
-//     technologies: ['Continuous Learning', 'Adaptability', 'Problem Solving', 'Innovation'],
-//   },
-// ];
-
-// function Skills() {
-//   const revealContainer = useRef(null);
-//   const skillCardsRef = useRef([]);
-//   const prefersReducedMotion = usePrefersReducedMotion();
-
-//   useEffect(() => {
-//     if (prefersReducedMotion) {
-//       return;
-//     }
-//     sr.reveal(revealContainer.current, srConfig());
-//   }, [prefersReducedMotion]);
-
-//   useEffect(() => {
-//     if (prefersReducedMotion) {
-//       return;
-//     }
-
-//     const observer = new IntersectionObserver(
-//       entries => {
-//         entries.forEach(entry => {
-//           if (entry.isIntersecting) {
-//             entry.target.classList.add('visible');
-//             observer.unobserve(entry.target);
-//           }
-//         });
-//       },
-//       {
-//         root: null,
-//         threshold: 0.1,
-//         rootMargin: '0px 0px -50px 0px',
-//       },
-//     );
-
-//     if (skillCardsRef.current) {
-//       skillCardsRef.current.forEach(el => {
-//         if (el) observer.observe(el);
-//       });
-//     }
-
-//     return () => {
-//       if (skillCardsRef.current) {
-//         skillCardsRef.current.forEach(el => {
-//           if (el) observer.unobserve(el);
-//         });
-//       }
-//     };
-//   }, [prefersReducedMotion]);
-
-//   const addToRefs = el => {
-//     if (el && !skillCardsRef.current.includes(el)) {
-//       skillCardsRef.current.push(el);
-//     }
-//   };
-
-//   return (
-//     <StyledSkillsSection id="skills" ref={revealContainer}>
-//       {/* <h2 className="section-title">My Development Journey</h2> */}
-//       <h2 className="numbered-heading">
-//         The Journey of a Modern Developer: From Zero to Full-Stack & Beyond
-//       </h2>
-
-//       <div className="skills-grid">
-//         {skillsData.map((phase, i) => (
-//           <div key={i} className="skill-card" ref={addToRefs}>
-//             <h3>{phase.title}</h3>
-//             <p>{phase.description}</p>
-//             <div className="tech-tags">
-//               {phase.technologies.map((tech, idx) => (
-//                 <span key={idx}>{tech}</span>
-//               ))}
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </StyledSkillsSection>
-//   );
-// }
-
-// export default Skills;

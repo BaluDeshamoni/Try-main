@@ -24,7 +24,9 @@ const StyledHeroSection = styled.section`
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
   }
-
+  .masters {
+    color: var(--green);
+  }
   .social {
     display: flex;
     justify-content: center;
@@ -78,8 +80,8 @@ const Hero = () => {
         {' '}
         Ever since I was very young, I used to wonder how the internet seemed to know
         everything.That little spark of curiosity grew into a big passion for software development
-        and eventually led me to pursue a master’s degree in Computer Science, turning childhood
-        wonder into my dream career.
+        and eventually led me to pursue a <span className="masters">Master’s</span> in Computer
+        Science at Iowa state University, turning childhood wonder into my dream career.
       </p>
     </>
   );
